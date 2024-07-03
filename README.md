@@ -59,7 +59,7 @@
     <div class="container">
         <header>
             <h1>Data Analyst Portfolio</h1>
-            <p>Your Name</p>
+            <p>Dinakaran Somasundaram</p>
         </header>
         <section class="introduction">
             <h2>Introduction</h2>
@@ -86,7 +86,7 @@
             </ul>
         </section>
         <section class="contact-info">
-            <p>Contact: <a href="mailto:your.email@example.com">your.email@example.com</a> | <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a></p>
+            <p>Contact: <a href="sdinakaran2509@gmail.com">your.email@example.com</a> | <a href="https://www.linkedin.com/in/dinakaran-somasundaram-data-analyst/">LinkedIn</a></p>
         </section>
     </div>
 </body>
