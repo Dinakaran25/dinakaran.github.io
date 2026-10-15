@@ -1,476 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Somasundaram Dinakaran | Senior Salesforce Developer & AI Specialist</title>
-    <!-- Google Fonts for Trailhead Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=ITC+Avant+Garde+Gothic:wght@700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --sf-blue: #0176D3;
-            --sf-blue-dark: #014486;
-            --sf-navy: #0B192C;
-            --sf-bg: #F3F5F7;
-            --sf-card: #FFFFFF;
-            --sf-text: #181818;
-            --sf-muted: #514F4D;
-            --sf-green: #2E844A;
-            --sf-badge-bg: #E0F2FE;
-            --sf-border: #DDDBDA;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--sf-bg);
-            color: var(--sf-text);
-            line-height: 1.6;
-        }
-
-        /* Header Navigation */
-        nav {
-            background-color: var(--sf-navy);
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
-        .nav-brand {
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: #FFFFFF;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-brand span {
-            color: var(--sf-blue);
-        }
-
-        .nav-links a {
-            color: #E0E0E0;
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--sf-blue);
-        }
-
-        /* Trailhead Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #014486 0%, #0176D3 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 2.75rem;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-        }
-
-        .hero .subtitle {
-            font-size: 1.25rem;
-            opacity: 0.95;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .hero-badge {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .hero-actions {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #FFFFFF;
-            color: var(--sf-blue-dark);
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .btn:hover {
-            background-color: #F3F5F7;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: #FFFFFF;
-            border: 2px solid #FFFFFF;
-        }
-
-        .btn-outline:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Layout Container */
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .section-title {
-            font-size: 1.75rem;
-            color: var(--sf-navy);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 24px;
-            background-color: var(--sf-blue);
-            border-radius: 4px;
-        }
-
-        /* Card Styles */
-        .card {
-            background: var(--sf-card);
-            border: 1px solid var(--sf-border);
-            border-radius: 8px;
-            padding: 1.75rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-        }
-
-        /* Certifications Grid (Trailhead Badge Style) */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.25rem;
-            margin-bottom: 3rem;
-        }
-
-        .cert-card {
-            background: var(--sf-card);
-            border: 1px solid var(--sf-border);
-            border-top: 4px solid var(--sf-blue);
-            border-radius: 8px;
-            padding: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-        }
-
-        .cert-icon {
-            width: 48px;
-            height: 48px;
-            background-color: var(--sf-badge-bg);
-            color: var(--sf-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .cert-info h4 {
-            font-size: 1rem;
-            color: var(--sf-text);
-        }
-
-        .cert-info p {
-            font-size: 0.85rem;
-            color: var(--sf-muted);
-        }
-
-        /* Skills Matrix */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-        }
-
-        .skill-chip {
-            background-color: #EBF5FE;
-            color: var(--sf-blue-dark);
-            border: 1px solid #BCE1FD;
-            padding: 0.4rem 0.8rem;
-            border-radius: 16px;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        /* Timeline / Experience */
-        .timeline-item {
-            border-left: 2px solid var(--sf-border);
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -7px;
-            top: 4px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--sf-blue);
-        }
-
-        .job-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--sf-navy);
-        }
-
-        .company-name {
-            color: var(--sf-blue);
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .job-date {
-            font-size: 0.85rem;
-            color: var(--sf-muted);
-            margin-bottom: 0.75rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--sf-navy);
-            color: #94A3B8;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 4rem;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: var(--sf-blue);
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            nav { flex-direction: column; gap: 1rem; }
-            .nav-links a { margin: 0 0.75rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Somasundaram Dinakaran | Senior Salesforce Developer & AI Specialist</title>
+<meta name="description" content="Senior Salesforce Developer specializing in Agentforce, LWC, Apex, Service Cloud and CPQ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0176D3;--blue-dark:#014486;--navy:#0B192C;--bg:#F3F5F7;--card:#fff;
+  --text:#181818;--muted:#514F4D;--border:#DDDBDA;--chip-bg:#EBF5FE;--chip-border:#BCE1FD;--badge-bg:#E0F2FE;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0f1722;--card:#17212f;--text:#e8edf3;--muted:#a7b2c0;--border:#2a3748;
+    --chip-bg:#12304d;--chip-border:#1f4f7d;--badge-bg:#12304d;--navy:#e8edf3;--blue:#4aa8f5}
+  nav,footer{background:#060d17}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+nav{background:#0B192C;color:#fff;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.nav-brand{font-weight:800;font-size:1.25rem}
+.nav-brand span{color:#4aa8f5}
+.nav-links a{color:#E0E0E0;text-decoration:none;margin-left:1.5rem;font-weight:600;font-size:.95rem;transition:color .2s}
+.nav-links a:hover{color:#4aa8f5}
+.hero{background:linear-gradient(135deg,#014486,#0176D3);color:#fff;padding:4rem 2rem;text-align:center}
+.hero h1{font-size:2.75rem;font-weight:800;margin-bottom:.5rem}
+.hero .subtitle{font-size:1.25rem;font-weight:600;margin-bottom:1rem}
+.hero-badges{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:.5rem 1rem;border-radius:20px;font-size:.875rem;font-weight:600}
+.hero-actions{margin-top:2rem;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-block;background:#fff;color:#014486;padding:.75rem 1.5rem;border-radius:4px;font-weight:700;text-decoration:none;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-outline{background:transparent;color:#fff;border:2px solid #fff}
+.btn-outline:hover{background:rgba(255,255,255,.12)}
+.container{max-width:1100px;margin:2rem auto;padding:0 1rem}
+.section-title{font-size:1.75rem;color:var(--navy);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem}
+.section-title::before{content:'';width:8px;height:24px;background:var(--blue);border-radius:4px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.75rem;margin-bottom:1.5rem;box-shadow:0 2px 4px rgba(0,0,0,.04)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-bottom:2rem}
+.cert-card{background:var(--card);border:1px solid var(--border);border-top:4px solid var(--blue);border-radius:8px;padding:1.25rem;display:flex;align-items:center;gap:1rem}
+.cert-icon{width:48px;height:48px;background:var(--badge-bg);color:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;flex-shrink:0}
+.cert-icon img{width:100%;height:100%;object-fit:contain}
+.cert-icon.has-img{width:72px;height:72px;background:transparent;border-radius:0}
+.cert-icon.has-img span{display:none}
+.cert-info h4{font-size:1rem}
+.cert-info p{font-size:.85rem;color:var(--muted)}
+.skills-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.skill-chip{background:var(--chip-bg);color:var(--blue);border:1px solid var(--chip-border);padding:.4rem .8rem;border-radius:16px;font-size:.875rem;font-weight:600}
+h3.group{font-size:1rem;color:var(--navy);margin-top:1.25rem}
+h3.group:first-of-type{margin-top:0}
+.timeline-item{border-left:2px solid var(--border);padding-left:1.5rem;position:relative;margin-bottom:2rem}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-item::before{content:'';position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--blue)}
+.job-title{font-size:1.2rem;font-weight:700;color:var(--navy)}
+.company-name{color:var(--blue);font-weight:600}
+.job-date{font-size:.85rem;color:var(--muted);margin-bottom:.75rem}
+.edu h3{font-size:1.1rem;color:var(--navy)}
+.edu p{color:var(--blue);font-weight:600}
+.edu+.edu{margin-top:1rem}
+footer{background:#0B192C;color:#94A3B8;text-align:center;padding:2rem 1rem;margin-top:4rem;font-size:.9rem}
+footer a{color:#4aa8f5;text-decoration:none}
+@media (max-width:768px){
+  .hero h1{font-size:2rem}
+  nav{flex-direction:column;gap:.75rem}
+  .nav-links a{margin:0 .6rem}
+}
+</style>
 </head>
 <body>
 
-    <!-- Navigation Header -->
-    <nav>
-        <div class="nav-brand">⚡ Trailblazer <span>Portfolio</span></div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#education">Education</a>
-        </div>
-    </nav>
+<nav>
+  <div class="nav-brand">⚡ Trailblazer <span>Portfolio</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </div>
+</nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <h1>Somasundaram Dinakaran</h1>
-        <div class="subtitle">Senior Salesforce Developer | Agentforce & AI Specialist</div>
-        <p>Specializing in CPQ, Service Cloud, LWC, Apex & AI-Driven Automation</p>
-        
-        <div class="hero-badges">
-            <span class="hero-badge">🏆 6+ Years Salesforce Exp.</span>
-            <span class="hero-badge">🤖 Agentforce Specialist</span>
-            <span class="hero-badge">📊 Analytics & CPQ Expert</span>
-        </div>
+<header class="hero">
+  <h1>Somasundaram Dinakaran</h1>
+  <div class="subtitle">Senior Salesforce Developer | Agentforce &amp; AI Specialist</div>
+  <p>Specializing in CPQ, Service Cloud, LWC, Apex &amp; AI-Driven Automation</p>
+  <div class="hero-badges">
+    <span class="hero-badge">🏆 6+ Years Salesforce Exp.</span>
+    <span class="hero-badge">🤖 Agentforce Specialist</span>
+    <span class="hero-badge">📊 Analytics &amp; CPQ Expert</span>
+  </div>
+  <div class="hero-actions">
+    <a href="https://www.salesforce.com/trailblazer/dinakaran" target="_blank" rel="noopener" class="btn">Trailblazer Profile</a>
+    <a href="https://www.linkedin.com/in/somasu" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+    <a href="mailto:dinakaran.sfdc@gmail.com" class="btn btn-outline">Contact Me</a>
+  </div>
+</header>
 
-        <div class="hero-actions">
-            <a href="mailto:dinakaran.sfdc@gmail.com" class="btn">Contact Me</a>
-            <a href="https://www.linkedin.com/in/somasu" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
-        </div>
-    </header>
+<div class="container">
 
-    <div class="container">
+  <section id="about" class="card">
+    <h2 class="section-title">Trailblazer Profile</h2>
+    <p>Senior Salesforce Developer with over 6 years of experience driving digital transformation through the Salesforce ecosystem. My journey began in Salesforce Administration, giving me a deep understanding of platform governance, security, and out-of-the-box capabilities.</p>
+    <p style="margin-top:1rem">Today, I build complex, scalable solutions using <strong>Lightning Web Components (LWC)</strong>, <strong>Apex</strong>, and <strong>Agentforce</strong>, with a proven record of delivering high-impact projects in the banking and energy sectors across Service Cloud, CPQ, and AI-driven automation.</p>
+  </section>
 
-        <!-- About Summary Section -->
-        <section id="about" class="card">
-            <h2 class="section-title">Trailblazer Profile</h2>
-            <p>
-                Senior Salesforce Developer with over 6 years of experience driving digital transformation through the Salesforce ecosystem[cite: 1]. My journey began in the trenches of Salesforce Administration, providing me with a deep-seated understanding of platform governance, security, and out-of-the-box capabilities[cite: 1].
-            </p>
-            <p style="margin-top: 1rem;">
-                Today, I specialize in developing complex, scalable solutions using <strong>Lightning Web Components (LWC)</strong>, <strong>Apex</strong>, and <strong>Agentforce</strong>[cite: 1]. I have a proven track record of delivering high-impact projects in the banking and energy sectors, focusing on Service Cloud, CPQ, and AI-driven automation[cite: 1].
-            </p>
-        </section>
-
-        <!-- Certifications Section -->
-        <section id="certifications">
-            <h2 class="section-title">Salesforce Certifications</h2>
-            <div class="cert-grid">
-                <div class="cert-card">
-                    <div class="cert-icon">AI</div>
-                    <div class="cert-info">
-                        <h4>Salesforce AI Specialist</h4>
-                        <p>Certified Specialist</p>
-                    </div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">AI</div>
-                    <div class="cert-info">
-                        <h4>Salesforce AI Associate</h4>
-                        <p>Certified Associate</p>
-                    </div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">PD1</div>
-                    <div class="cert-info">
-                        <h4>Platform Developer I (PD1)</h4>
-                        <p>Certified Developer</p>
-                    </div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">ADM</div>
-                    <div class="cert-info">
-                        <h4>Salesforce Certified Administrator</h4>
-                        <p>Certified Administrator (SCA)</p>
-                    </div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">TAB</div>
-                    <div class="cert-info">
-                        <h4>Tableau Certified</h4>
-                        <p>Analytics Specialist</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Matrix Section -->
-        <section id="skills" class="card">
-            <h2 class="section-title">Technical Expertise</h2>
-            
-            <h3 style="font-size: 1rem; color: var(--sf-navy); margin-top: 1rem;">Core Salesforce Platform</h3>
-            <div class="skills-grid">
-                <span class="skill-chip">Salesforce.com Development</span>
-                <span class="skill-chip">Salesforce CPQ</span>
-                <span class="skill-chip">Service Cloud</span>
-                <span class="skill-chip">Sales Cloud</span>
-                <span class="skill-chip">Agentforce</span>
-            </div>
-
-            <h3 style="font-size: 1rem; color: var(--sf-navy); margin-top: 1.25rem;">Development & Architecture</h3>
-            <div class="skills-grid">
-                <span class="skill-chip">Apex</span>
-                <span class="skill-chip">Lightning Web Components (LWC)</span>
-                <span class="skill-chip">SOQL / SOSL</span>
-                <span class="skill-chip">Process Automation</span>
-                <span class="skill-chip">REST/SOAP API Integrations</span>
-            </div>
-
-            <h3 style="font-size: 1rem; color: var(--sf-navy); margin-top: 1.25rem;">Analytics & AI</h3>
-            <div class="skills-grid">
-                <span class="skill-chip">Salesforce AI Agents</span>
-                <span class="skill-chip">Tableau Analytics</span>
-                <span class="skill-chip">CRM Innovation</span>
-            </div>
-        </section>
-
-        <!-- Experience Timeline Section -->
-        <section id="experience" class="card">
-            <h2 class="section-title">Professional Journey</h2>
-
-            <div class="timeline-item">
-                <div class="job-title">Senior Salesforce Developer</div>
-                <div class="company-name">Marathon Petroleum Corporation</div>
-                <div class="job-date">February 2024 – Present • United States</div>
-                <p>Architecting enterprise Salesforce solutions, specializing in Service Cloud, Agentforce AI implementation, and complex business process automations[cite: 1].</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="job-title">Salesforce Developer</div>
-                <div class="company-name">Popular Bank</div>
-                <div class="job-date">May 2023 – January 2024 • United States</div>
-                <p>Delivered custom Lightning Web Components (LWC), Apex integrations, and Service Cloud automations for enterprise banking workflows[cite: 1].</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="job-title">Salesforce Developer</div>
-                <div class="company-name">VPBank</div>
-                <div class="job-date">March 2021 – July 2022 • India</div>
-                <p>Developed custom Apex solutions, optimized SOQL queries, and supported CPQ quote generation logic[cite: 1].</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="job-title">Salesforce Administrator</div>
-                <div class="company-name">Carrier</div>
-                <div class="job-date">May 2020 – March 2021 • India</div>
-                <p>Managed platform security, user permissions, out-of-the-box configurations, and report dashboards[cite: 1].</p>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="card">
-            <h2 class="section-title">Education</h2>
-            <div style="margin-bottom: 1rem;">
-                <h3 style="font-size: 1.1rem; color: var(--sf-navy);">Central Michigan University</h3>
-                <p style="color: var(--sf-blue); font-weight: 600;">Master's Degree, Information Technology</p>
-            </div>
-            <div>
-                <h3 style="font-size: 1.1rem; color: var(--sf-navy);">Jawaharlal Nehru Technological University Hyderabad (JNTUH)</h3>
-                <p style="color: var(--sf-blue); font-weight: 600;">Bachelor's Degree, Computer Science</p>
-            </div>
-        </section>
-
+  <section id="certifications">
+    <h2 class="section-title">Salesforce Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card"><div class="cert-icon"><span>AI</span><img src="assets/certs/ai-specialist.png" alt="Salesforce AI Specialist badge" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="cert-info"><h4>Salesforce AI Specialist</h4><p>Certified Specialist</p></div></div>
+      <div class="cert-card"><div class="cert-icon"><span>AI</span><img src="assets/certs/ai-associate.png" alt="Salesforce AI Associate badge" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="cert-info"><h4>Salesforce AI Associate</h4><p>Certified Associate</p></div></div>
+      <div class="cert-card"><div class="cert-icon"><span>PD1</span><img src="assets/certs/platform-developer-1.png" alt="Platform Developer I badge" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="cert-info"><h4>Platform Developer I</h4><p>Certified Developer</p></div></div>
+      <div class="cert-card"><div class="cert-icon"><span>ADM</span><img src="assets/certs/administrator.png" alt="Salesforce Administrator badge" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="cert-info"><h4>Salesforce Administrator</h4><p>Certified Administrator</p></div></div>
+      <div class="cert-card"><div class="cert-icon"><span>TAB</span><img src="assets/certs/tableau.png" alt="Tableau Certified badge" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="cert-info"><h4>Tableau Certified</h4><p>Analytics Specialist</p></div></div>
     </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Somasundaram Dinakaran. Built for GitHub Pages.</p>
-        <p style="margin-top: 0.5rem;"><a href="https://linkedin.com/in/somasu" target="_blank">LinkedIn Profile</a> • <a href="mailto:dinakaran.sfdc@gmail.com">Contact via Email</a></p>
-    </footer>
+  <section id="skills" class="card">
+    <h2 class="section-title">Technical Expertise</h2>
+    <h3 class="group">Core Salesforce Platform</h3>
+    <div class="skills-grid">
+      <span class="skill-chip">Salesforce Development</span><span class="skill-chip">Salesforce CPQ</span><span class="skill-chip">Service Cloud</span><span class="skill-chip">Sales Cloud</span><span class="skill-chip">Agentforce</span>
+    </div>
+    <h3 class="group">Development &amp; Architecture</h3>
+    <div class="skills-grid">
+      <span class="skill-chip">Apex</span><span class="skill-chip">Lightning Web Components</span><span class="skill-chip">SOQL / SOSL</span><span class="skill-chip">Process Automation</span><span class="skill-chip">REST/SOAP Integrations</span>
+    </div>
+    <h3 class="group">Analytics &amp; AI</h3>
+    <div class="skills-grid">
+      <span class="skill-chip">Salesforce AI Agents</span><span class="skill-chip">Tableau Analytics</span><span class="skill-chip">CRM Innovation</span>
+    </div>
+  </section>
+
+  <section id="experience" class="card">
+    <h2 class="section-title">Professional Journey</h2>
+    <div class="timeline-item">
+      <div class="job-title">Senior Salesforce Developer</div>
+      <div class="company-name">Marathon Petroleum Corporation</div>
+      <div class="job-date">February 2024 – Present • United States</div>
+      <p>Architecting enterprise Salesforce solutions, specializing in Service Cloud, Agentforce AI implementation, and complex business process automation.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="job-title">Salesforce Developer</div>
+      <div class="company-name">Popular Bank</div>
+      <div class="job-date">May 2023 – January 2024 • United States</div>
+      <p>Delivered custom Lightning Web Components, Apex integrations, and Service Cloud automations for enterprise banking workflows.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="job-title">Salesforce Developer</div>
+      <div class="company-name">VPBank</div>
+      <div class="job-date">March 2021 – July 2022 • India</div>
+      <p>Developed custom Apex solutions, optimized SOQL queries, and supported CPQ quote generation logic.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="job-title">Salesforce Administrator</div>
+      <div class="company-name">Carrier</div>
+      <div class="job-date">May 2020 – March 2021 • India</div>
+      <p>Managed platform security, user permissions, out-of-the-box configuration, and reports and dashboards.</p>
+    </div>
+  </section>
+
+  <section id="education" class="card">
+    <h2 class="section-title">Education</h2>
+    <div class="edu"><h3>Central Michigan University</h3><p>Master's Degree, Information Technology</p></div>
+    <div class="edu"><h3>Jawaharlal Nehru Technological University Hyderabad (JNTUH)</h3><p>Bachelor's Degree, Computer Science</p></div>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2026 Somasundaram Dinakaran</p>
+  <p style="margin-top:.5rem">
+    <a href="https://www.salesforce.com/trailblazer/dinakaran" target="_blank" rel="noopener">Trailblazer</a> •
+    <a href="https://www.linkedin.com/in/somasu" target="_blank" rel="noopener">LinkedIn</a> •
+    <a href="mailto:dinakaran.sfdc@gmail.com">Email</a>
+  </p>
+</footer>
 
 </body>
 </html>
